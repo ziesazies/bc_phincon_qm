@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f9fafb;
+            color: var(--text-dark);
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+        }
+        .name-section, .about-section, .project-section, .skills-section, .contact-section {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 10px auto;
+        }
+        .project-list, .skill-list {
+            display: flex;
+            gap: 1em;
+        }
+
+        .skill-list {
+            justify-content: center;
+        }
+
+        .project {
+            text-align: left;
+            padding: 2em;
+        }
+
+        .skill {
+            background-color: #738290;
+            width: 100px;
+            text-align: center;
+            align-items: center;
+            color: #FFFCF7;
+            border-radius: 12px;
+            font-size: 0.75em;
+        }
+        
+        .name-section, .contact-section {
+            background-color: #E4F0D0;
+        }
+        .about-section, .project, .skills-section {
+            background-color: #C2D8B9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="name-section">
+            <h1>Alief Ahmad Azies</h1>
+            <p>Web Developer | Designer | Photographer</p>
+        </div>
+        <div class="about-section">
+            <img src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?semt=ais_hybrid&w=740" class="profile-img" alt="">
+            <h1>Tentang Saya</h1>
+            <p>Halo saya adalah seorang web developer dengan pengalaman 5 tahun di bidang pengembangan website dan aplikasi. Saya senang menciptakan solusi digital yang menarik dan bermanfaat</p>
+        </div>
+        <div class="project-section">
+            <h1>Proyek Terbaru</h1>
+            <div class="project-list">
+                <div class="project">
+                    <h2>E-Commerce Website</h2>
+                    <p>Website e-commerce lengkap dengan fitur pembaaran, keranjang belanja, dan manajemen produk</p>
+                </div>
+                <div class="project">
+                    <h2>Aplikasi Manajemen Tugas</h2>
+                    <p>Aplikasi web untuk membantu pengguna mengelola dan melacak tugas-tugas mereka dengan antarmuka yang intuitif</p>
+                </div>
+                <div class="project">
+                    <h2>Website Portofolio Fotografi</h2>
+                    <p>Portofolio fotografi dengan galeri responsif dan animasi halus untuk menampilkan karya fotografi</p>
+                </div>
+            </div>
+        </div>
+        <div class="skills-section">
+            <h1>Keahlian</h1>
+            <div class="skill-list">
+                <div class="skill"><p>Javascript</p></div>
+                <div class="skill"><p>HTML</p></div>
+                <div class="skill"><p>CSS</p></div>
+                <div class="skill"><p>React</p></div>
+            </div>
+        </div>
+        <div class="contact-section">
+            <h1>Kontak</h1>
+            <p>Email: siko.spade31@gmail.com</p>
+            <p>Telepon: 085727536897</p>
+            <p>Lokasi: Jakarta, Indonesia</p>
+        </div>
+    </div>
+    
+</body>
+</html>

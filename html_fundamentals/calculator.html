@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator Grid</title>
+  <style>
+    body {
+      background: #f3f4f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .calculator {
+      background: #1f2937;
+      border-radius: 1rem;
+      padding: 2rem;
+      width: 300px;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 1.5rem;
+    }
+
+    .display {
+      background: #111827;
+      color: white;
+      font-size: 2rem;
+      text-align: right;
+      padding: 1rem;
+      border-radius: 0.5rem;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+    }
+
+    .button {
+      background: #374151;
+      color: white;
+      font-size: 1.25rem;
+      border: none;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .button:hover {
+      background: #4b5563;
+    }
+
+    .button.operator {
+      background: #10b981;
+      color: white;
+    }
+
+    .button.equal {
+      grid-column: span 2;
+      background: #3b82f6;
+    }
+
+    .button.zero {
+      grid-column: span 2;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator">
+    <div class="display">0</div>
+    <div class="buttons">
+      <button class="button">C</button>
+      <button class="button">+/-</button>
+      <button class="button">%</button>
+      <button class="button operator">/</button>
+
+      <button class="button">7</button>
+      <button class="button">8</button>
+      <button class="button">9</button>
+      <button class="button operator">x</button>
+
+      <button class="button">4</button>
+      <button class="button">5</button>
+      <button class="button">6</button>
+      <button class="button operator">-</button>
+
+      <button class="button">1</button>
+      <button class="button">2</button>
+      <button class="button">3</button>
+      <button class="button operator">+</button>
+
+      <button class="button zero">0</button>
+      <button class="button">.</button>
+      <button class="button equal">=</button>
+    </div>
+  </div>
+
+</body>
+</html>
