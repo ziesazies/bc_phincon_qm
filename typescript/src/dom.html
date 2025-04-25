@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pokémon Evolver</title>
+</head>
+<body class="bg-green-50 flex items-center justify-center min-h-screen">
+  <div id="container" class="bg-white p-6 rounded-lg shadow-lg text-center max-w-xs">
+    <button id="evolveBtn" class="mt-4 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Evolve</button>
+  </div>
+
+  <script>
+    let container = document.getElementById("container");
+    const evolveBtn = document.getElementById("evolveBtn");
+
+    // Daftar evolusi berurutan
+    const evolutionChain = ['bulbasaur', 'ivysaur', 'venusaur'];
+    let currentEvolutionIndex = 0;
+
+    // Elemen yang akan kita update
+    let nameDiv, image, heightDiv, weightDiv, abilityTitle;
+
+    async function fetchPokemon(name) {
+      try {
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+        return await response.json();
+      } catch (error) {
+        console.log(error);
+        throw new Error(error);
+      }
+    }
+
+    function clearContent() {
+      container.querySelectorAll(".dynamic").forEach(el => el.remove());
+    }
+
+    async function renderPokemon(name) {
+      clearContent();
+      const data = await fetchPokemon(name);
+
+      // Nama
+      nameDiv = document.createElement("div");
+      nameDiv.textContent = `Name: ${data.name}`;
+      nameDiv.className = "text-2xl font-bold mb-4 text-green-600 dynamic";
+      container.insertBefore(nameDiv, evolveBtn);
+
+      // Gambar
+      image = document.createElement("img");
+      image.src = data.sprites.other.dream_world.front_default || data.sprites.front_default;
+      image.alt = data.name;
+      image.className = "w-32 h-32 mx-auto mb-4 dynamic";
+      container.insertBefore(image, evolveBtn);
+
+      // Info dasar
+      heightDiv = document.createElement("div");
+      heightDiv.textContent = `Height: ${data.height}`;
+      heightDiv.className = "text-gray-700 dynamic";
+      container.insertBefore(heightDiv, evolveBtn);
+
+      weightDiv = document.createElement("div");
+      weightDiv.textContent = `Weight: ${data.weight}`;
+      weightDiv.className = "text-gray-700 dynamic";
+      container.insertBefore(weightDiv, evolveBtn);
+
+      // Abilities
+      abilityTitle = document.createElement("h2");
+      abilityTitle.textContent = "Abilities";
+      abilityTitle.className = "mt-4 font-semibold text-gray-800 dynamic";
+      container.insertBefore(abilityTitle, evolveBtn);
+
+      data.abilities.forEach((value) => {
+        let abilityDiv = document.createElement("div");
+        abilityDiv.textContent = `Ability: ${value.ability.name}`;
+        abilityDiv.className = "text-sm text-gray-600 dynamic";
+        container.insertBefore(abilityDiv, evolveBtn);
+      });
+    }
+
+    evolveBtn.addEventListener("click", async () => {
+      if (currentEvolutionIndex < evolutionChain.length - 1) {
+        currentEvolutionIndex++;
+        await renderPokemon(evolutionChain[currentEvolutionIndex]);
+      } else {
+        alert("Sudah di tahap evolusi terakhir!");
+      }
+    });
+
+    // Initial load
+    renderPokemon(evolutionChain[currentEvolutionIndex]);
+  </script>
+</body>
+</html>
